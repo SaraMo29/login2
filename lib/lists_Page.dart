@@ -29,7 +29,7 @@ class ListsPage extends StatelessWidget {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverToBoxAdapter(
-            child: Container(
+            child: SizedBox(
               height: 200,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
