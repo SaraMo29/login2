@@ -3,6 +3,7 @@ import 'package:login_screen/custom_pass_textField.dart';
 import 'package:login_screen/lists_Page.dart';
 import 'package:login_screen/reusable_component/custom_button.dart';
 import 'package:login_screen/reusable_component/custom_text_form_field.dart';
+import 'package:login_screen/reusable_component/user_needs.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -21,14 +22,12 @@ class _LoginFormState extends State<LoginForm> {
           context, MaterialPageRoute(builder: (context) => ListsPage()));
     }
   }
-
   // Define your validator function
   String? validateTextField(String? value) {
     return (value != null && !value.contains('@') && !value.contains('.'))
         ? 'Enter a valid email.'
         : null;
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,9 +57,7 @@ class _LoginFormState extends State<LoginForm> {
                 prefixIcon: Icons.email,
                 controller: emailController,
               ),
-              const SizedBox(
-                height: 16.0,
-              ),
+              const SizedBox( height: 16.0, ),
               CustomPassTextfield(
                 hintText: "Enter your Password",
                 label: "Password",
@@ -76,51 +73,19 @@ class _LoginFormState extends State<LoginForm> {
               const SizedBox(
                 height: 16.0,
               ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Do you forget your password?',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 15,
-                    ),
-                  ),
-                  Text(
-                    ' Sign Up',
-                    style: TextStyle(color: Color(0xffC7EDE6)),
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 16.0,
-              ),
-              Container(
+              const UserNeeds(
+                  question: 'Do you Forget your password?', answer: 'Reset Now'),
+              const SizedBox(height: 16.0,),
+              SizedBox(
                   height: 50,
                   width: double.infinity,
                   child: CustomButton(
                     onPress: _submitForm,
                     textButton: 'Log In',
                   )),
-              const SizedBox(
-                height: 16.0,
-              ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Don\'t have an account?',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 15,
-                    ),
-                  ),
-                  Text(
-                    ' Sign Up',
-                    style: TextStyle(color: Color(0xffC7EDE6)),
-                  ),
-                ],
-              )
+              const SizedBox(height: 16.0, ),
+              const UserNeeds(
+                  question: 'Don\'t have an account?', answer: 'Sign Up'),
             ],
           ),
         ),
